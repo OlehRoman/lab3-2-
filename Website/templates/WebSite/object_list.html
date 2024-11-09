@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Object List</title>
+</head>
+<body>
+    <h1>Object List</h1>
+    <ul>
+        {% for obj in objects %}
+            <li>
+                {{ obj.name }} - {{ obj.description }}
+                <form action="{% url 'delete_object' obj.id %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
